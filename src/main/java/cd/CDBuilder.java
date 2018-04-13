@@ -12,6 +12,8 @@ public class CDBuilder {
     private String title;
     private int releaseYear;
     private List<Track> trackList = new ArrayList<>();
+    private CD cd;
+
 
 
     public CDBuilder artist(String artist) {
@@ -35,13 +37,15 @@ public class CDBuilder {
     }
 
     public CDBuilder setOneTrack(Track track) {
+        track.setCD(this.cd);
         this.trackList.add(track);
         return this;
     }
 
 
     public CD build() {
-        return new CD(artist, title, releaseYear, trackList);
+        cd=new CD(artist,title,releaseYear,trackList);
+        return cd;
     }
 
 
