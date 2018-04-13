@@ -31,17 +31,6 @@ public class CDBuilder {
         return this;
     }
 
-    public CDBuilder trackList(List<Track> list) {
-        this.trackList.addAll(list);
-        return this;
-    }
-
-    public CDBuilder setOneTrack(Track track) {
-        track.setCD(this.cd);
-        this.trackList.add(track);
-        return this;
-    }
-
 
     public CD build() {
         cd=new CD(artist,title,releaseYear,trackList);

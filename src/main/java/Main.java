@@ -1,6 +1,8 @@
 import Library.CDLibrary;
 import cd.CD;
 import cd.CDBuilder;
+import finder.FindByTitle;
+import menu.CdDisplay;
 import menu.CdReader;
 import track.Track;
 import track.TrackBuilder;
@@ -19,19 +21,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
-
-
-
-
-
-
-
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         CdReader cdReader=new CdReader();
+        FindByTitle findByTitle=new FindByTitle();
 
 
 
@@ -39,16 +33,10 @@ public class Main {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(cdReader.addNewCD());
-
-            for(int i=0;i<cdReader.getCd().getTrackList().size();i++){
-                entityManager.persist(cdReader.getCd().getTrackList().get(i));
-            }
+            findByTitle.findCD();
 
 
             entityManager.getTransaction().commit();
-
-
 
 
 

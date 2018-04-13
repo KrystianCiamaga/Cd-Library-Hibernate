@@ -31,7 +31,7 @@ public class CdReader {
         int releaseYear = scanner.nextInt();
         scanner.nextLine();
 
-        cd = new CDBuilder()
+         cd = new CDBuilder()
                 .title(title)
                 .artist(artist)
                 .realeaseYear(releaseYear)
@@ -46,11 +46,10 @@ public class CdReader {
         scanner.nextLine();
         if (option == 1) {
             cd.setTrackList(readTracks());
+
         } else {
 
         }
-
-
         return cd;
     }
 
@@ -80,6 +79,7 @@ public class CdReader {
                 .build();
 
         track.setCD(cd);
+
         return track;
     }
 

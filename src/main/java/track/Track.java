@@ -21,6 +21,9 @@ public class Track {
     private CD cd;
 
 
+    public Track() {
+    }
+
     public Track(String title, String artist) {
         this.title = title;
         this.artist = artist;
@@ -31,5 +34,13 @@ public class Track {
         this.cd = cd;
     }
 
-
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", artist='" + artist + '\'' +
+                ", cd=" + cd +
+                '}';
+    }
 }

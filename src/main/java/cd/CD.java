@@ -9,6 +9,7 @@ import track.Track;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -18,11 +19,15 @@ public class CD {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
+    public CD() {
+    }
+
     private String artist;
     private String title;
     private int releaseYear;
 
-    @OneToMany(mappedBy = "cd")
+    @OneToMany(mappedBy = "cd",fetch = FetchType.EAGER)
     private List<Track> trackList;
 
     public CD(String artist, String title, int releaseYear, List trackList) {
@@ -35,7 +40,12 @@ public class CD {
 
 
 
-
-
-
+    @Override
+    public String toString() {
+        return "CD INFO: "+"ID=" + id +
+                ", ARTIST='" + artist + '\'' +
+                ", TITLE='" + title + '\'' +
+                ", RELEASEYEAR=" + releaseYear +
+                '}';
+    }
 }
