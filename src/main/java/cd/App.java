@@ -2,6 +2,7 @@ package cd;
 
 import Library.CDLibrary;
 import finder.FindByTitle;
+import menu.CdDisplay;
 import menu.CdReader;
 
 import java.util.Scanner;
@@ -11,6 +12,7 @@ public class App {
     CdReader cdReader = new CdReader();
     CDLibrary cdLibrary = new CDLibrary();
     FindByTitle findByTitle = new FindByTitle();
+    CdDisplay cdDisplay=new CdDisplay();
 
 
     public void showMenu() {
@@ -29,6 +31,8 @@ public class App {
                 case 1:
                     cdReader.addNewCD();
                     break;
+                case 2:
+                    CdDisplay.show();
                 case 3:
                     findByTitle.findCD();
                 default:

@@ -49,7 +49,6 @@ public class CDLibrary {
     }
 
 
-
     public List<CD> findCDByTitle(String name) {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
@@ -61,14 +60,6 @@ public class CDLibrary {
         query.setParameter("name", name);
 
         List<CD> resultList = query.getResultList();
-
-
-        entityManager.getTransaction().begin();
-
-        findByTitle.findCD();
-
-        entityManager.getTransaction().commit();
-
 
         entityManager.close();
         entityManagerFactory.close();
