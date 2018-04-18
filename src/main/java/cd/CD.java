@@ -27,7 +27,7 @@ public class CD {
     private String title;
     private int releaseYear;
 
-    @OneToMany(mappedBy = "cd",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cd", fetch = FetchType.EAGER)
     private List<Track> trackList;
 
     public CD(String artist, String title, int releaseYear, List trackList) {
@@ -38,11 +38,9 @@ public class CD {
     }
 
 
-
-
     @Override
     public String toString() {
-        return "CD INFO: "+"ID=" + id +
+        return "CD INFO: " + "ID=" + id +
                 ", ARTIST='" + artist + '\'' +
                 ", TITLE='" + title + '\'' +
                 ", RELEASEYEAR=" + releaseYear +

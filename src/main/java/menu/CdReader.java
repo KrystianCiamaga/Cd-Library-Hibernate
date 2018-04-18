@@ -45,7 +45,7 @@ public class CdReader {
         int option = scanner.nextInt();
         scanner.nextLine();
         if (option == 1) {
-            cd.setTrackList(readTracks());
+            cdLibrary.addTracks(readTracks());
 
         } else {
 

@@ -1,7 +1,9 @@
 package Library;
 
 import cd.CD;
+import finder.FindByTitle;
 import lombok.Getter;
+import track.Track;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,35 +13,69 @@ import java.util.List;
 public class CDLibrary {
 
 
-
-private List<CD> cdList=new ArrayList<>();
-
-
-public void addCD(CD cd){
-    cdList.add(cd);
-}
+    public void addCD(CD cd) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 
+        entityManager.getTransaction().begin();
 
-public List<CD> findCDByTitle(String name){
+        entityManager.persist(cd);
 
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
-    EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().commit();
 
-    TypedQuery<CD> query = entityManager.createQuery("select e from CD e where e.title=:name ", CD.class);
-    query.setParameter("name",name);
+        entityManager.close();
+        entityManagerFactory.close();
 
-    List<CD> resultList = query.getResultList();
+    }
 
-    entityManager.close();
-    entityManagerFactory.close();
+    public void addTracks(List<Track> tracks) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        for (Track x : tracks) {
+            entityManager.persist(x);
+        }
+
+        entityManager.getTransaction().commit();
 
 
-   return resultList;
+        entityManager.close();
+        entityManagerFactory.close();
 
-}
+    }
 
 
+
+    public List<CD> findCDByTitle(String name) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        FindByTitle findByTitle = new FindByTitle();
+
+        TypedQuery<CD> query = entityManager.createQuery("select e from CD e where e.title=:name ", CD.class);
+        query.setParameter("name", name);
+
+        List<CD> resultList = query.getResultList();
+
+
+        entityManager.getTransaction().begin();
+
+        findByTitle.findCD();
+
+        entityManager.getTransaction().commit();
+
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+        return resultList;
+
+    }
 
 
 }

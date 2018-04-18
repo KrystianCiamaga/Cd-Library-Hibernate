@@ -2,7 +2,6 @@ import Library.CDLibrary;
 import cd.CD;
 import cd.CDBuilder;
 import finder.FindByTitle;
-import menu.CdDisplay;
 import menu.CdReader;
 import track.Track;
 import track.TrackBuilder;
@@ -25,18 +24,16 @@ public class Main {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         CdReader cdReader=new CdReader();
-        FindByTitle findByTitle=new FindByTitle();
-
-
-
 
 
             entityManager.getTransaction().begin();
 
-            findByTitle.findCD();
+        entityManager.persist(cdReader.addNewCD());
 
 
             entityManager.getTransaction().commit();
+
+
 
 
 
