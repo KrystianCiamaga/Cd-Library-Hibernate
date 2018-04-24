@@ -1,6 +1,7 @@
 package cd;
 
 import Library.CDLibrary;
+import finder.ArtistFinder;
 import finder.FindByTitle;
 import menu.CdDisplay;
 import menu.CdReader;
@@ -12,7 +13,8 @@ public class App {
     CdReader cdReader = new CdReader();
     CDLibrary cdLibrary = new CDLibrary();
     FindByTitle findByTitle = new FindByTitle();
-    CdDisplay cdDisplay=new CdDisplay();
+    CdDisplay cdDisplay = new CdDisplay();
+    ArtistFinder artistFinder = new ArtistFinder();
 
 
     public void showMenu() {
@@ -33,20 +35,25 @@ public class App {
                     break;
                 case 2:
                     CdDisplay.show();
+                    break;
                 case 3:
                     findByTitle.findCD();
+                case 4:
+                    artistFinder.AllArtistFinder();
+                    break;
+                case 5:
+                    findByTitle.findTrack();
+                    break;
                 default:
                     exit = true;
             }
         }
-
-
     }
 
 
     public static void main(String[] args) {
 
-        App app=new App();
+        App app = new App();
 
         app.showMenu();
 

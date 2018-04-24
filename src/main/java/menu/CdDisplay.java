@@ -32,10 +32,8 @@ public class CdDisplay {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-
         Query query = entityManager.createQuery("select e from CD e", CD.class);
         List<CD> resultList = query.getResultList();
-
 
         int i = 1;
         for (CD cd : resultList) {
@@ -58,8 +56,21 @@ public class CdDisplay {
 
 
 
+    public static void showTracks(List<Track> list) {
 
+        int i=1;
+            for (Track track : list) {
+                System.out.println("Track: " + i);
+                System.out.println("Title: " + track.getTitle());
+                System.out.println("Artist: " + track.getArtist() + "\n");
 
-
+                i++;
+            }
+        }
 
 }
+
+
+
+
+

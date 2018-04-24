@@ -13,8 +13,6 @@ public class FindByTitle {
     CDLibrary cdLibrary=new CDLibrary();
 
 
-
-
     public void findCD(){
 
         System.out.println("Enter CD title");
@@ -25,6 +23,14 @@ public class FindByTitle {
     }
 
 
+public void findTrack(){
+
+    System.out.println("Enter Track title");
+    String title=scanner.nextLine();
+
+    CdDisplay.showTracks(cdLibrary.findTrackByTitle(title));
+
+}
 
 
 
